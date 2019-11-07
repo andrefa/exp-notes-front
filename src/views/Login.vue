@@ -18,7 +18,9 @@
 import { mapState } from 'vuex'
 
 export default {
-  data: () => ({ authToken: '' }),
+  data: () => ({
+    authToken: ''
+  }),
   computed: mapState({
     loading: 'loading'
   }),

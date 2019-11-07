@@ -1,20 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import ApolloClient from 'apollo-boost'
-import App from './App.vue'
-import './registerServiceWorker'
-import router from './router'
-import createStore from './stores'
+
+import '@/registerServiceWorker'
+
+import App from '@/App.vue'
+import router from '@/router'
+import createStore from '@/store'
 
 Vue.use(Vuex)
 Vue.config.productionTip = false
-
-// const apolloClient = new ApolloClient({
-//   uri: 'https://exp-notes.herokuapp.com//graphql',
-//   tokenName: 'AUTH_TOKEN'
-// })
-
-// Vue.use(apolloClient)
 
 new Vue({
   router,

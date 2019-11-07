@@ -4,6 +4,7 @@
     <span>resumo budget</span>
     <span>tabela gastos</span>
     <span>tabela tasks</span>
+    <span>{{ api }}</span>
   </div>
 </template>
 
@@ -13,6 +14,9 @@ import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'home',
+  data: () => ({
+    api: process.env.VUE_APP_API_URL
+  }),
   components: {
     HelloWorld
   }
