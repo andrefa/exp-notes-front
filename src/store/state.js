@@ -1,5 +1,5 @@
 const state = {
-  authToken: localStorage.getItem('AUTH_TOKEN'),
+  authToken: null,
   loading: false
 }
 

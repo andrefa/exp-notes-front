@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
+import store from '@/store'
 import Login from '@/views/Login.vue'
 
 Vue.use(VueRouter)
@@ -42,9 +42,11 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.path !== '/' && !localStorage.getItem('AUTH_TOKEN')) {
+  const { authenticated } = store.getters
+
+  if (to.path !== '/' && !authenticated) {
     next('/')
-  } else if (to.path === '/' && localStorage.getItem('AUTH_TOKEN')) {
+  } else if (to.path === '/' && authenticated) {
     next('/home')
   } else {
     next()
