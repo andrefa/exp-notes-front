@@ -20,7 +20,7 @@ const actions = {
   async [actionTypes.FETCH_TRIPS]({ commit, state }) {
     commit(mutationTypes.TOGGLE_LOADING, { loading: true })
 
-    const query = '{ trips { id name }}'
+    const query = '{ trips { id name start_date end_date }}'
 
     const { trips } = await fetchGraphql(state.authToken, query)
     commit(mutationTypes.SET_TRIPS, { trips })

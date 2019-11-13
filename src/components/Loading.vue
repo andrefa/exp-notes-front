@@ -1,5 +1,5 @@
 <template>
-  <span v-if="loading">CA RRE GAN DO</span>
+  <div class='loading loading-lg' v-if='loading'></div>
 </template>
 
 <script>

@@ -13,7 +13,7 @@ const routes = [
     meta: { title: 'Login' }
   },
   {
-    path: '/home',
+    path: '/home/:tripId?',
     name: 'home',
     // lazy loading
     meta: { title: 'Home' },
