@@ -16,6 +16,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { LOGIN } from '@/store/action-types'
 
 export default {
   data: () => ({
@@ -26,7 +27,7 @@ export default {
   }),
   methods: {
     login() {
-      this.$store.dispatch('login', { authToken: this.authToken })
+      this.$store.dispatch(LOGIN, { authToken: this.authToken })
       this.$router.push('/home')
     }
   }

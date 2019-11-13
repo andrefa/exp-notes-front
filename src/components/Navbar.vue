@@ -18,6 +18,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { LOGOUT } from '@/store/action-types'
 
 export default {
   name: 'Navbar',
@@ -28,7 +29,7 @@ export default {
   },
   methods: {
     logout() {
-      this.$store.dispatch('logout')
+      this.$store.dispatch(LOGOUT)
       this.$router.push('/')
     }
   }

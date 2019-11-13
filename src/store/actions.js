@@ -1,10 +1,11 @@
+import { LOGIN, LOGOUT } from './action-types'
 import { SET_AUTH_TOKEN } from './mutation-types'
 
 const actions = {
-  login({ commit }, { authToken }) {
+  [LOGIN]({ commit }, { authToken }) {
     commit(SET_AUTH_TOKEN, { authToken })
   },
-  logout({ commit }) {
+  [LOGOUT]({ commit }) {
     commit(SET_AUTH_TOKEN)
   }
 }
