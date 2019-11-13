@@ -1,11 +1,18 @@
 import Vue from 'vue'
-import { SET_AUTH_TOKEN, TOGGLE_LOADING } from './mutation-types'
+import defaultState from './state'
+import * as mutationTypes from './mutation-types'
 
 const mutations = {
-  [SET_AUTH_TOKEN](state, { authToken } = {}) {
+  [mutationTypes.CLEAR](state) {
+    Object.assign(state, defaultState)
+  },
+  [mutationTypes.SET_AUTH_TOKEN](state, { authToken } = {}) {
     Vue.set(state, 'authToken', authToken)
   },
-  [TOGGLE_LOADING](state, { loading } = {}) {
+  [mutationTypes.SET_TRIPS](state, { trips } = {}) {
+    Vue.set(state, 'trips', trips)
+  },
+  [mutationTypes.TOGGLE_LOADING](state, { loading } = {}) {
     Vue.set(state, 'loading', loading)
   }
 }

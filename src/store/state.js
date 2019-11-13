@@ -1,6 +1,7 @@
 const state = {
   authToken: null,
-  loading: false
+  loading: false,
+  trips: []
 }
 
 export default state
