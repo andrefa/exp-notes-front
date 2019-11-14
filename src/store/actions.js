@@ -5,9 +5,8 @@ const apiUrl = process.env.VUE_APP_API_URL
 
 const fetchGraphql = async (authorization, query) => {
   const response = await fetch(`${apiUrl}/graphql`, {
-    // credentials: 'include',
     headers: { authorization, 'content-type': 'application/json' },
-    body: `{"operationName":null,"variables":{},"query":" ${query} "}`,
+    body: JSON.stringify({ query }),
     method: 'POST',
     mode: 'cors'
   })
@@ -17,6 +16,16 @@ const fetchGraphql = async (authorization, query) => {
 }
 
 const actions = {
+  async [actionTypes.FETCH_TASKS]({ commit, state }, { tripId }) {
+    commit(mutationTypes.TOGGLE_LOADING, { loading: true })
+
+    const query = `{ tasks(trip_id: ${tripId}) { id description complete }}`
+
+    const { tasks } = await fetchGraphql(state.authToken, query)
+    commit(mutationTypes.SET_TASKS, { tasks })
+
+    commit(mutationTypes.TOGGLE_LOADING)
+  },
   async [actionTypes.FETCH_TRIPS]({ commit, state }) {
     commit(mutationTypes.TOGGLE_LOADING, { loading: true })
 
@@ -32,6 +41,16 @@ const actions = {
   },
   [actionTypes.LOGOUT]({ commit }) {
     commit(mutationTypes.CLEAR)
+  },
+  async [actionTypes.TOGGLE_TASK]({ commit, state }, { taskId, complete }) {
+    commit(mutationTypes.TOGGLE_LOADING, { loading: true })
+
+    const query = `mutation { toggleTask(id: ${taskId} complete: ${complete}){ id }}`
+
+    await fetchGraphql(state.authToken, query)
+    commit(mutationTypes.TOGGLE_TASK, { taskId, complete })
+
+    commit(mutationTypes.TOGGLE_LOADING)
   }
 }
 

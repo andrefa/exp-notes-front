@@ -1,3 +1,5 @@
+export const FETCH_TASKS = 'FETCH_TASKS'
 export const FETCH_TRIPS = 'FETCH_TRIPS'
 export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'
+export const TOGGLE_TASK = 'TOGGLE_TASK'
