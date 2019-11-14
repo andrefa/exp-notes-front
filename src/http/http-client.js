@@ -1,16 +1,14 @@
-import * as actionTypes from './action-types'
-import * as mutationTypes from './mutation-types'
-
 const apiUrl = process.env.VUE_APP_API_URL
 
 const fetchGraphql = async (authorization, query) => {
-  const response = await fetch(`${apiUrl}/graphql`, {
+  const payload = {
     headers: { authorization, 'content-type': 'application/json' },
     body: JSON.stringify({ query }),
     method: 'POST',
     mode: 'cors'
-  })
+  }
 
+  const response = await fetch(`${apiUrl}/graphql`, payload)
   const json = await response.json()
   return json.data
 }
@@ -35,6 +33,7 @@ const actions = {
       const { trips } = await fetchGraphql(state.authToken, query)
       commit(mutationTypes.SET_TRIPS, { trips })
     } catch (error) {
+      console.error(error)
       commit(mutationTypes.CLEAR)
     }
 
