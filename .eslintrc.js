@@ -9,8 +9,8 @@ module.exports = {
   ],
   rules: {
     'comma-dangle': ['error', 'never'],
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
     'quotes': ['error', 'single'],
     'semi': ['error', 'never']
   },

@@ -54,7 +54,6 @@ export default {
       this.$router.push(`/home/${id}`)
     },
     toggleTask(taskId, complete) {
-      console.log(taskId, complete)
       this.$store.dispatch(TOGGLE_TASK, { taskId, complete })
     }
   },
