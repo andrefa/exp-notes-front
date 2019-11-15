@@ -1,27 +1,20 @@
 <template>
   <main>
-    <Loading />
-    <button class='btn btn-primary'
-        v-bind:class='{ disabled: trip.id == activeTripId }'
-        v-for='trip in trips'
+    <div class="cards-container">
+      <TripCard v-for='trip in trips'
         v-bind:key='`trip-${trip.id}`'
-        v-on:click='setActiveTrip(trip.id)'>
-      {{ trip.name }}
-    </button>
-    <h1 v-if='activeTrip'>{{ activeTrip.name }}</h1>
-    <div v-for='task in tasks'
-        v-bind:key='`task-state-${task.id}`'>
-      <input type='checkbox'
-          :name='`task-state-${task.id}`'
-          v-model='task.complete'
-          v-on:click='toggleTask(task.id, !task.complete)'>
-      <label :for='`task-state-${task.id}`'>{{ task.description }}</label>
+        :trip="trip"
+        :setActiveTrip="setActiveTrip"/>
     </div>
+    <h1 v-if='activeTrip'>Traveling to {{ activeTrip.name }}</h1>
+    <h4 v-if='activeTrip'>Pending tasks</h4>
+    <Tasks :tasks="tasks" :toggleTask="toggleTask"/>
   </main>
 </template>
 
 <script>
-import Loading from '@/shared/components/Loading.vue'
+import Tasks from '@/shared/components/Tasks.vue'
+import TripCard from '@/shared/components/TripCard.vue'
 import { FETCH_TASKS, FETCH_TRIPS, TOGGLE_TASK } from '@/shared/store/action-types'
 
 export default {
@@ -30,7 +23,8 @@ export default {
     api: process.env.VUE_APP_API_URL
   }),
   components: {
-    Loading
+    Tasks,
+    TripCard
   },
   computed: {
     trips() {
@@ -68,6 +62,26 @@ export default {
 </script>
 
 <style scoped>
+  main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: baseline;
+    align-content: stretch;
+  }
+  main > * {
+    margin-bottom: 20px;
+  }
+  .cards-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: space-around;
+    width: 100%;
+  }
   button {
     margin: .6rem 0 0 .6rem;
   }
