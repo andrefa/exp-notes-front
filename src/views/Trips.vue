@@ -19,9 +19,6 @@ import { FETCH_TASKS, FETCH_TRIPS, TOGGLE_TASK } from '@/shared/store/action-typ
 
 export default {
   name: 'trips',
-  data: () => ({
-    api: process.env.VUE_APP_API_URL
-  }),
   components: {
     Tasks,
     TripCard

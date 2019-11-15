@@ -12,16 +12,48 @@
           v-bind:class='{ complete: task.complete }'>
         {{ task.description }}
       </label>
+      <i class="icon icon-edit" v-on:click='editTask(task)'></i>
+      <i class="icon icon-stop" v-on:click='deleteTask(task.id)'></i>
     </div>
+    <input type="text"
+        class="form-input"
+        placeholder="Task description"
+        v-model="selectedTask.description">
+    <button class='btn btn-primary'
+        v-on:click='addTask()'>
+      Save
+    </button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Tasks',
+  data: () => ({
+    selectedTask: {
+      description: ''
+    }
+  }),
   props: {
     tasks: Array,
     toggleTask: Function
+  },
+  methods: {
+    addTask() {
+      alert(this.selectedTask.description)
+      alert(this.selectedTask.id)
+    },
+    editTask(task) {
+      this.selectedTask = {
+        ...task
+      }
+    },
+    deleteTask(id) {
+      // eslint-disable-next-line no-restricted-globals
+      if (confirm('Confirm task removal?')) {
+        console.log('deletado', id)
+      }
+    }
   }
 }
 </script>
@@ -29,5 +61,14 @@ export default {
 <style scoped>
   .complete {
     text-decoration: line-through;
+  }
+  .icon {
+    margin-left: 10px;
+  }
+  .icon-edit {
+    color: #ffe18f;
+  }
+  .icon-stop {
+    color: red;
   }
 </style>
