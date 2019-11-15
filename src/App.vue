@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue'
+import Navbar from '@/shared/components/Navbar.vue'
 
 export default {
   name: 'App',
@@ -15,3 +15,9 @@ export default {
   }
 }
 </script>
+
+<style>
+  main {
+    padding: 10px;
+  }
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main>
     <Loading />
     <button class='btn btn-primary'
         v-bind:class='{ disabled: trip.id == activeTripId }'
@@ -17,15 +17,15 @@
           v-on:click='toggleTask(task.id, !task.complete)'>
       <label :for='`task-state-${task.id}`'>{{ task.description }}</label>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
-import Loading from '@/components/Loading.vue'
-import { FETCH_TASKS, FETCH_TRIPS, TOGGLE_TASK } from '@/store/action-types'
+import Loading from '@/shared/components/Loading.vue'
+import { FETCH_TASKS, FETCH_TRIPS, TOGGLE_TASK } from '@/shared/store/action-types'
 
 export default {
-  name: 'home',
+  name: 'trips',
   data: () => ({
     api: process.env.VUE_APP_API_URL
   }),
@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     setActiveTrip(id) {
-      this.$router.push(`/home/${id}`)
+      this.$router.push(`/trips/${id}`)
     },
     toggleTask(taskId, complete) {
       this.$store.dispatch(TOGGLE_TASK, { taskId, complete })

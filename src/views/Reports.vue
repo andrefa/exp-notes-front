@@ -1,7 +1,7 @@
 <template>
-  <div class="reports">
+  <main>
     <h1>Reports!</h1>
-  </div>
+  </main>
 </template>
 
 <script>

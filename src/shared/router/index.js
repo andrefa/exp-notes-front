@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from '@/store'
+import store from '@/shared/store'
 import Login from '@/views/Login.vue'
 
 Vue.use(VueRouter)
@@ -13,25 +13,25 @@ const routes = [
     meta: { title: 'Login' }
   },
   {
-    path: '/home/:tripId?',
-    name: 'home',
+    path: '/trips/:tripId?',
+    name: 'trips',
     // lazy loading
-    meta: { title: 'Home' },
-    component: () => import('../views/Home.vue')
+    meta: { title: 'Trips' },
+    component: () => import('@/views/Trips.vue')
   },
   {
     path: '/lists',
     name: 'lists',
     meta: { title: 'Lists' },
     // lazy loading
-    component: () => import('../views/Lists.vue')
+    component: () => import('@/views/Lists.vue')
   },
   {
     path: '/reports',
     name: 'reports',
     meta: { title: 'Reports' },
     // lazy loading
-    component: () => import('../views/Reports.vue')
+    component: () => import('@/views/Reports.vue')
   }
 ]
 
@@ -47,7 +47,7 @@ router.beforeEach((to, from, next) => {
   if (to.path !== '/' && !authenticated) {
     next('/')
   } else if (to.path === '/' && authenticated) {
-    next('/home')
+    next('/trips')
   } else {
     next()
   }
