@@ -17,7 +17,7 @@ const routes = [
     name: 'trips',
     // lazy loading
     meta: { title: 'Trips' },
-    component: () => import('@/views/Trips.vue')
+    component: () => import('@/views/trips/Trips.vue')
   },
   {
     path: '/lists',

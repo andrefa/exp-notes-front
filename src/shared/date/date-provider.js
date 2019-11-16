@@ -1,9 +1,6 @@
-const dateProvider = {
-  parseStringDate: strDate => new Date(strDate),
-  formatStringDate: (strDate) => {
-    const date = dateProvider.parseStringDate(strDate)
-    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
-  }
-}
+export const parseStringDate = strDate => new Date(strDate)
 
-export default dateProvider
+export const formatStringDate = (strDate) => {
+  const date = parseStringDate(strDate)
+  return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+}
