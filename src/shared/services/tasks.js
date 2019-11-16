@@ -3,6 +3,10 @@ import * as mutationTypes from '@/shared/store/mutation-types'
 
 import httpClientFactory from '@/shared/services/http/http-client'
 
+const clearTaskForm = async ({ commit }) => {
+  commit(mutationTypes.CLEAR_TASK_FORM)
+}
+
 const deleteTask = async ({ commit, state }, { taskId }) => {
   commit(mutationTypes.TOGGLE_LOADING, { loading: true })
 
@@ -11,6 +15,10 @@ const deleteTask = async ({ commit, state }, { taskId }) => {
   commit(mutationTypes.DELETE_TASK, { taskId })
 
   commit(mutationTypes.TOGGLE_LOADING)
+}
+
+const editTask = async ({ commit }, { task }) => {
+  commit(mutationTypes.SET_TASK_FORM, { task: { ...task } })
 }
 
 const fetchTasks = async ({ commit, state }, { tripId }) => {
@@ -27,7 +35,7 @@ const saveTask = async ({ commit, state }, { task }) => {
   commit(mutationTypes.TOGGLE_LOADING, { loading: true })
 
   if (task.id) {
-    const query = `mutation { editTask(id: ${task.id} description: ${task.description}) { id description complete }}`
+    const query = `mutation { editTask(id: ${task.id} description: "${task.description}") { id description complete }}`
     const response = await httpClientFactory(state).fetchGraphql(query)
     commit(mutationTypes.SAVE_TASK, { task: response.editTask })
   } else {
@@ -50,7 +58,9 @@ async function toggleTask({ commit, state }, { taskId, complete }) {
 }
 
 const actions = {
+  [actionTypes.CLEAR_TASK_FORM]: clearTaskForm,
   [actionTypes.DELETE_TASK]: deleteTask,
+  [actionTypes.EDIT_TASK]: editTask,
   [actionTypes.FETCH_TASKS]: fetchTasks,
   [actionTypes.SAVE_TASK]: saveTask,
   [actionTypes.TOGGLE_TASK]: toggleTask

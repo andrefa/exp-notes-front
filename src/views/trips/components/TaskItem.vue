@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { DELETE_TASK, TOGGLE_TASK } from '@/shared/store/action-types'
+import { DELETE_TASK, EDIT_TASK, TOGGLE_TASK } from '@/shared/store/action-types'
 
 export default {
   name: 'TaskItem',
@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     editTask(task) {
-      this.$store.dispatch('edit_task', task)
+      this.$store.dispatch(EDIT_TASK, { task })
     },
     deleteTask(taskId) {
       // eslint-disable-next-line

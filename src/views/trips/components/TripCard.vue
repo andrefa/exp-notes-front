@@ -1,5 +1,5 @@
 <template>
-  <div class="column col-3 col-xs-12 mobile-margin">
+  <div class="column col-4 col-md-6 col-xs-12 mobile-margin">
     <div class="card" v-if="trip">
       <div class="card-image">
         <img class="img-responsive"

@@ -3,7 +3,11 @@ const state = {
   loading: false,
   places: [],
   trips: [],
-  tasks: []
+  tasks: [],
+  taskForm: {
+    id: null,
+    description: null
+  }
 }
 
 export default state

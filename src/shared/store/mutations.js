@@ -6,6 +6,12 @@ const mutations = {
   [mutationTypes.CLEAR](state) {
     Object.assign(state, defaultState)
   },
+  [mutationTypes.CLEAR_TASK_FORM](state) {
+    Object.assign(state, {
+      ...state,
+      taskForm: { ...defaultState.taskForm }
+    })
+  },
   [mutationTypes.DELETE_TASK](state, { taskId } = {}) {
     Object.assign(state, {
       ...state,
@@ -24,7 +30,8 @@ const mutations = {
 
     Object.assign(state, {
       ...state,
-      tasks
+      tasks,
+      taskForm: { ...defaultState.taskForm }
     })
   },
   [mutationTypes.SET_AUTH_TOKEN](state, { authToken } = {}) {
@@ -35,6 +42,12 @@ const mutations = {
   },
   [mutationTypes.SET_TASKS](state, { tasks } = {}) {
     Vue.set(state, 'tasks', tasks)
+  },
+  [mutationTypes.SET_TASK_FORM](state, { task } = {}) {
+    Object.assign(state, {
+      ...state,
+      taskForm: { ...task }
+    })
   },
   [mutationTypes.SET_TRIPS](state, { trips } = {}) {
     Vue.set(state, 'trips', trips)

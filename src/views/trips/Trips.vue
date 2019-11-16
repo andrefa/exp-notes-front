@@ -53,7 +53,4 @@ export default {
     align-content: space-around;
     width: 100%;
   }
-  button {
-    margin: .6rem 0 0 .6rem;
-  }
 </style>
