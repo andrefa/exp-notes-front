@@ -3,7 +3,10 @@ export const DELETE_TASK = 'DELETE_TASK'
 
 export const EDIT_TASK = 'EDIT_TASK'
 
+export const FETCH_CATEGORIES = 'FETCH_CATEGORIES'
+export const FETCH_CURRENCIES = 'FETCH_CURRENCIES'
 export const FETCH_PLACES = 'FETCH_PLACES'
+export const FETCH_SOURCES = 'FETCH_SOURCES'
 export const FETCH_TASKS = 'FETCH_TASKS'
 export const FETCH_TRIPS = 'FETCH_TRIPS'
 

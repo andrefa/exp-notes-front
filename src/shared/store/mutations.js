@@ -37,8 +37,17 @@ const mutations = {
   [mutationTypes.SET_AUTH_TOKEN](state, { authToken } = {}) {
     Vue.set(state, 'authToken', authToken)
   },
+  [mutationTypes.SET_CATEGORIES](state, { categories } = {}) {
+    Vue.set(state, 'categories', categories)
+  },
+  [mutationTypes.SET_CURRENCIES](state, { currencies } = {}) {
+    Vue.set(state, 'currencies', currencies)
+  },
   [mutationTypes.SET_PLACES](state, { places } = {}) {
     Vue.set(state, 'places', places)
+  },
+  [mutationTypes.SET_SOURCES](state, { sources } = {}) {
+    Vue.set(state, 'sources', sources)
   },
   [mutationTypes.SET_TASKS](state, { tasks } = {}) {
     Vue.set(state, 'tasks', tasks)
