@@ -24,7 +24,7 @@ const routes = [
     name: 'lists',
     meta: { title: 'Lists' },
     // lazy loading
-    component: () => import('@/views/Lists.vue')
+    component: () => import('@/views/lists/Lists.vue')
   },
   {
     path: '/reports',

@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { SAVE_TASK } from '@/shared/store/action-types'
+
 export default {
   name: 'TaskForm',
   data: () => ({
@@ -21,7 +23,12 @@ export default {
   }),
   methods: {
     addTask() {
-      this.$store.dispatch('save_task', { task: this.task })
+      const task = {
+        id: this.task.id,
+        description: this.task.description,
+        tripId: this.$route.params.tripId
+      }
+      this.$store.dispatch(SAVE_TASK, { task })
     }
   }
 }

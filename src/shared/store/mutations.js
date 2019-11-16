@@ -6,8 +6,32 @@ const mutations = {
   [mutationTypes.CLEAR](state) {
     Object.assign(state, defaultState)
   },
+  [mutationTypes.DELETE_TASK](state, { taskId } = {}) {
+    Object.assign(state, {
+      ...state,
+      tasks: state.tasks.filter(t => t.id !== taskId)
+    })
+  },
+  [mutationTypes.SAVE_TASK](state, { task } = {}) {
+    const taskIdx = state.tasks.findIndex(t => t.id === task.id)
+    let tasks = [...state.tasks]
+
+    if (taskIdx !== -1) {
+      tasks[taskIdx] = { ...task }
+    } else {
+      tasks = [...tasks, task]
+    }
+
+    Object.assign(state, {
+      ...state,
+      tasks
+    })
+  },
   [mutationTypes.SET_AUTH_TOKEN](state, { authToken } = {}) {
     Vue.set(state, 'authToken', authToken)
+  },
+  [mutationTypes.SET_PLACES](state, { places } = {}) {
+    Vue.set(state, 'places', places)
   },
   [mutationTypes.SET_TASKS](state, { tasks } = {}) {
     Vue.set(state, 'tasks', tasks)
