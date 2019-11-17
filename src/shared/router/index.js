@@ -20,6 +20,13 @@ const routes = [
     component: () => import('@/views/trips/Trips.vue')
   },
   {
+    path: '/expenses/:tripId',
+    name: 'expenses',
+    // lazy loading
+    meta: { title: 'Trips' },
+    component: () => import('@/views/expenses/Expenses.vue')
+  },
+  {
     path: '/lists',
     name: 'lists',
     meta: { title: 'Lists' },

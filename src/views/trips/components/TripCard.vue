@@ -15,6 +15,7 @@
       </div>
       <div class="card-footer">
         <a class="btn btn-primary" href="#cards" v-on:click="setActiveTrip(trip.id)">Details</a>
+        <a class="btn btn-primary" href="#cards" v-on:click="gotoExpenses(trip.id)">Expenses</a>
       </div>
     </div>
   </div>
@@ -39,6 +40,9 @@ export default {
   methods: {
     setActiveTrip(id) {
       this.$router.push(`/trips/${id}`)
+    },
+    gotoExpenses(id) {
+      this.$router.push(`/expenses/${id}`)
     }
   }
 }
@@ -52,5 +56,8 @@ export default {
   }
   .trip-period {
     font-size: 0.7rem;
+  }
+  .btn {
+    margin: .6rem .6rem 0 0;
   }
 </style>

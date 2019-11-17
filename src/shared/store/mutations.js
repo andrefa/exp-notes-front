@@ -43,6 +43,9 @@ const mutations = {
   [mutationTypes.SET_CURRENCIES](state, { currencies } = {}) {
     Vue.set(state, 'currencies', currencies)
   },
+  [mutationTypes.SET_EXPENSES](state, { expenses } = {}) {
+    Vue.set(state, 'expenses', expenses)
+  },
   [mutationTypes.SET_PLACES](state, { places } = {}) {
     Vue.set(state, 'places', places)
   },
@@ -59,8 +62,12 @@ const mutations = {
     })
   },
   [mutationTypes.SET_TRIPS](state, { trips } = {}) {
-    Vue.set(state, 'trips', trips)
-    Vue.set(state, 'tasks', defaultState.tasks)
+    Object.assign(state, {
+      ...state,
+      trips,
+      tasks: defaultState.tasks,
+      expenses: defaultState.expenses
+    })
   },
   [mutationTypes.TOGGLE_LOADING](state, { loading } = {}) {
     Vue.set(state, 'loading', loading)
