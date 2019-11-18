@@ -49,6 +49,27 @@ const mutations = {
   [mutationTypes.SET_PLACES](state, { places } = {}) {
     Vue.set(state, 'places', places)
   },
+
+  [mutationTypes.SET_REMAINING_AMOUNT_PER_DAY](state, { remainingAmountPerDay } = {}) {
+    Vue.set(state, 'remainingAmountPerDay', remainingAmountPerDay)
+  },
+  [mutationTypes.SET_REMAINING_AMOUNT_PER_SOURCE](state, { remainingAmountPerSource } = {}) {
+    Vue.set(state, 'remainingAmountPerSource', remainingAmountPerSource)
+  },
+  [mutationTypes.SET_REMAINING_DAYS](state, { remainingDays } = {}) {
+    Vue.set(state, 'remainingDays', remainingDays)
+  },
+  [mutationTypes.SET_SPENT_PER_CATEGORY](state, { spentPerCategory } = {}) {
+    Vue.set(state, 'spentPerCategory', spentPerCategory)
+  },
+  [mutationTypes.SET_SPENT_PER_DAY](state, { spentPerDay } = {}) {
+    Vue.set(state, 'spentPerDay', spentPerDay)
+  },
+  [mutationTypes.SET_SPENT_PER_SOURCE](state, { spentPerSource } = {}) {
+    Vue.set(state, 'spentPerSource', spentPerSource)
+  },
+
+
   [mutationTypes.SET_SOURCES](state, { sources } = {}) {
     Vue.set(state, 'sources', sources)
   },

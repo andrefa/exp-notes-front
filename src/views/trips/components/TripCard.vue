@@ -16,6 +16,7 @@
       <div class="card-footer">
         <a class="btn btn-primary" href="#cards" v-on:click="setActiveTrip(trip.id)">Details</a>
         <a class="btn btn-primary" href="#cards" v-on:click="gotoExpenses(trip.id)">Expenses</a>
+        <a class="btn btn-primary" href="#cards" v-on:click="gotoReports(trip.id)">Reports</a>
       </div>
     </div>
   </div>
@@ -43,6 +44,9 @@ export default {
     },
     gotoExpenses(id) {
       this.$router.push(`/expenses/${id}`)
+    },
+    gotoReports(id) {
+      this.$router.push(`/reports/${id}`)
     }
   }
 }

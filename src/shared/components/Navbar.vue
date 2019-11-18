@@ -3,7 +3,6 @@
     <section class="navbar-section" v-if="authenticated">
       <router-link to="/trips">Trips</router-link>
       <router-link to="/lists">Lists</router-link>
-      <router-link to="/reports">Reports</router-link>
       <a v-on:click="logout" href="#">Logout</a>
     </section>
     <section class="navbar-center">
