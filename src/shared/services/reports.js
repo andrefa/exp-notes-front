@@ -17,8 +17,8 @@ const reports = [
     mutation: mutationTypes.SET_SPENT_PER_CATEGORY
   },
   {
-    name: 'spentPerDay',
-    fields: ['day', 'amount'],
+    name: 'spentPerDayAndCategory',
+    fields: ['day', 'category', 'amount'],
     action: actionTypes.FETCH_SPENT_PER_DAY,
     mutation: mutationTypes.SET_SPENT_PER_DAY
   },

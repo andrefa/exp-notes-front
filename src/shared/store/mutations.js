@@ -49,7 +49,6 @@ const mutations = {
   [mutationTypes.SET_PLACES](state, { places } = {}) {
     Vue.set(state, 'places', places)
   },
-
   [mutationTypes.SET_REMAINING_AMOUNT_PER_DAY](state, { remainingAmountPerDay } = {}) {
     Vue.set(state, 'remainingAmountPerDay', remainingAmountPerDay)
   },
@@ -62,14 +61,12 @@ const mutations = {
   [mutationTypes.SET_SPENT_PER_CATEGORY](state, { spentPerCategory } = {}) {
     Vue.set(state, 'spentPerCategory', spentPerCategory)
   },
-  [mutationTypes.SET_SPENT_PER_DAY](state, { spentPerDay } = {}) {
-    Vue.set(state, 'spentPerDay', spentPerDay)
+  [mutationTypes.SET_SPENT_PER_DAY](state, { spentPerDayAndCategory } = {}) {
+    Vue.set(state, 'spentPerDayAndCategory', spentPerDayAndCategory)
   },
   [mutationTypes.SET_SPENT_PER_SOURCE](state, { spentPerSource } = {}) {
     Vue.set(state, 'spentPerSource', spentPerSource)
   },
-
-
   [mutationTypes.SET_SOURCES](state, { sources } = {}) {
     Vue.set(state, 'sources', sources)
   },
@@ -84,10 +81,9 @@ const mutations = {
   },
   [mutationTypes.SET_TRIPS](state, { trips } = {}) {
     Object.assign(state, {
-      ...state,
-      trips,
-      tasks: defaultState.tasks,
-      expenses: defaultState.expenses
+      ...defaultState,
+      authToken: state.authToken,
+      trips
     })
   },
   [mutationTypes.TOGGLE_LOADING](state, { loading } = {}) {

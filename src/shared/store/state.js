@@ -8,7 +8,13 @@ const state = {
   sources: [],
   trips: [],
   tasks: [],
-  taskForm: { id: null, description: null }
+  taskForm: { id: null, description: null },
+  spentPerSource: [],
+  spentPerCategory: [],
+  spentPerDayAndCategory: [],
+  remainingDays: 0,
+  remainingAmountPerSource: [],
+  remainingAmountPerDay: 0
 }
 
 export default state
