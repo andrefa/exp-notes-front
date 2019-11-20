@@ -9,6 +9,14 @@
       <div class="card-header">
         <span class="card-title h5">{{ trip.name }}</span>
         <TripCardStatus :status="status"/>
+        <div>
+          <figure class="avatar avatar-xl"
+            v-for="user in trip.users"
+            v-bind:key='`user-${user.id}`'>
+            <img :src="`https://pt.gravatar.com/avatar/${md5Hash(user.email)}`"
+              :alt="user.name" :title="user.name">
+          </figure>
+        </div>
         <div class="card-subtitle text-gray trip-period body-font-size">
           From {{ startDate }}
           to {{ endDate }}
@@ -27,7 +35,6 @@
           <span class="enphasize">Money left:</span>
             ${{ trip.remaning_amount_per_day }}
         </div>
-
       </div>
 
       <div class="card-footer">
@@ -42,8 +49,10 @@
 </template>
 
 <script>
+import md5 from 'md5'
 import TripCardStatus from '@/views/trips/components/TripCardStatus.vue'
 import { formatStringDate, isBeforeNow, isAfterNow } from '@/shared/date/date-provider'
+
 
 export default {
   name: 'TripCard',
@@ -79,6 +88,9 @@ export default {
     },
     gotoReports(id) {
       this.$router.push(`/reports/${id}`)
+    },
+    md5Hash(text) {
+      return md5(text)
     }
   }
 }

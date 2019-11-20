@@ -6,7 +6,15 @@ import httpClientFactory from '@/shared/services/http/http-client'
 async function fetchTrips({ commit, state }) {
   commit(TOGGLE_LOADING, { loading: true })
 
-  const query = '{ trips { id name start_date end_date remaining_days remaning_amount_per_day }}'
+  const query = `
+  {
+    trips {
+     id name start_date end_date remaining_days remaning_amount_per_day
+     users {
+       id name email
+     }
+    }
+  }`
   const { trips } = await httpClientFactory(state).fetchGraphql(query)
   commit(SET_TRIPS, { trips })
 
