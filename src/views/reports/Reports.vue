@@ -1,16 +1,5 @@
 <template>
   <main>
-    <div>
-      <span class="br">
-        <span class="enphasize">Remaining days:</span> {{ remainingDays.remaining_days }}
-      </span>
-      <span class="br">
-        <span class="enphasize">Remaining amount per day:</span>
-        $ {{ remainingAmountPerDay.remaining_per_day }}
-      </span>
-    </div>
-
-    <hr>
 
     <BarChart v-if="barChartSpentPerDayAndCategory"
       :chartdata="barChartSpentPerDayAndCategory.data"
@@ -59,9 +48,7 @@ export default {
       'spentPerSource',
       'spentPerCategory',
       'spentPerDayAndCategory',
-      'remainingDays',
-      'remainingAmountPerSource',
-      'remainingAmountPerDay'
+      'remainingAmountPerSource'
     ]),
     tripId() {
       return this.$route.params.tripId
@@ -144,9 +131,7 @@ export default {
     this.$store.dispatch(actionTypes.FETCH_SPENT_PER_SOURCE, { tripId })
     this.$store.dispatch(actionTypes.FETCH_SPENT_PER_CATEGORY, { tripId })
     this.$store.dispatch(actionTypes.FETCH_SPENT_PER_DAY, { tripId })
-    this.$store.dispatch(actionTypes.FETCH_REMAINING_DAYS, { tripId })
     this.$store.dispatch(actionTypes.FETCH_REMAINING_AMOUNT_PER_SOURCE, { tripId })
-    this.$store.dispatch(actionTypes.FETCH_REMAINING_AMOUNT_PER_DAY, { tripId })
   }
 }
 </script>
@@ -154,11 +139,5 @@ export default {
 <style scoped>
   main > * {
     margin-bottom: 2rem;
-  }
-  .enphasize {
-    font-weight: bold;
-  }
-  .br {
-    display: block;
   }
 </style>

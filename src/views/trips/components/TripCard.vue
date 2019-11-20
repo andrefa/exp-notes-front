@@ -8,16 +8,34 @@
       </div>
       <div class="card-header">
         <span class="card-title h5">{{ trip.name }}</span>
-        <TripCardStatus :startDate="trip.start_date" :endDate="trip.end_date"/>
-        <div class="card-subtitle text-gray trip-period">
+        <TripCardStatus :status="status"/>
+        <div class="card-subtitle text-gray trip-period body-font-size">
           From {{ startDate }}
           to {{ endDate }}
         </div>
+        <div class="card-subtitle body-font-size" v-if="status !== 'FINISHED'">
+          <span class="enphasize">Remaining days:</span> {{ trip.remaining_days }}
+        </div>
+        <div class="card-subtitle body-font-size" v-else>
+          <span class="enphasize">Trip finished :(</span>
+        </div>
+        <div class="card-subtitle body-font-size" v-if="status !== 'FINISHED'">
+          <span class="enphasize">Remaining per day:</span>
+            ${{ trip.remaning_amount_per_day }}
+        </div>
+        <div class="card-subtitle body-font-size" v-else>
+          <span class="enphasize">Money left:</span>
+            ${{ trip.remaning_amount_per_day }}
+        </div>
+
       </div>
+
       <div class="card-footer">
-        <a class="btn btn-primary" href="#cards" v-on:click="setActiveTrip(trip.id)">Details</a>
-        <a class="btn btn-primary" href="#cards" v-on:click="gotoExpenses(trip.id)">Expenses</a>
-        <a class="btn btn-primary" href="#cards" v-on:click="gotoReports(trip.id)">Reports</a>
+        <a class="btn btn-primary" href="#cards" v-on:click="setActiveTrip(trip.id)">Tasks</a>
+        <a class="btn btn-primary" :class="{ disabled: status === 'COMING' }"
+          href="#cards" v-on:click="gotoExpenses(trip.id)">Expenses</a>
+        <a class="btn btn-primary" :class="{ disabled: status === 'COMING' }"
+          href="#cards" v-on:click="gotoReports(trip.id)">Reports</a>
       </div>
     </div>
   </div>
@@ -25,7 +43,7 @@
 
 <script>
 import TripCardStatus from '@/views/trips/components/TripCardStatus.vue'
-import { formatStringDate } from '@/shared/date/date-provider'
+import { formatStringDate, isBeforeNow, isAfterNow } from '@/shared/date/date-provider'
 
 export default {
   name: 'TripCard',
@@ -41,6 +59,15 @@ export default {
     },
     endDate() {
       return formatStringDate(this.trip.end_date)
+    },
+    status() {
+      if (isBeforeNow(this.endDate)) {
+        return 'FINISHED'
+      }
+      if (isAfterNow(this.startDate)) {
+        return 'COMING'
+      }
+      return 'CURRENT'
     }
   },
   methods: {
@@ -63,10 +90,16 @@ export default {
       margin-bottom: 20px;
     }
   }
-  .trip-period {
+  .trip-period{
+    margin-bottom: 0.5rem
+  }
+  .body-font-size {
     font-size: 0.7rem;
   }
   .btn {
     margin: .6rem .6rem 0 0;
+  }
+  .enphasize {
+    font-weight: bold;
   }
 </style>

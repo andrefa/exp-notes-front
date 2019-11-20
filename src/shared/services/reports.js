@@ -23,22 +23,10 @@ const reports = [
     mutation: mutationTypes.SET_SPENT_PER_DAY
   },
   {
-    name: 'remainingDays',
-    fields: ['remaining_days'],
-    action: actionTypes.FETCH_REMAINING_DAYS,
-    mutation: mutationTypes.SET_REMAINING_DAYS
-  },
-  {
     name: 'remainingAmountPerSource',
     fields: ['source', 'amount', 'remaining_per_source'],
     action: actionTypes.FETCH_REMAINING_AMOUNT_PER_SOURCE,
     mutation: mutationTypes.SET_REMAINING_AMOUNT_PER_SOURCE
-  },
-  {
-    name: 'remainingAmountPerDay',
-    fields: ['remaining_per_day'],
-    action: actionTypes.FETCH_REMAINING_AMOUNT_PER_DAY,
-    mutation: mutationTypes.SET_REMAINING_AMOUNT_PER_DAY
   }
 ]
 
