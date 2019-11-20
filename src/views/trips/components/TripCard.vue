@@ -7,7 +7,8 @@
           :alt="`${trip.name} random picture`" />
       </div>
       <div class="card-header">
-        <div class="card-title h5">{{ trip.name }}</div>
+        <span class="card-title h5">{{ trip.name }}</span>
+        <TripCardStatus :startDate="trip.start_date" :endDate="trip.end_date"/>
         <div class="card-subtitle text-gray trip-period">
           From {{ startDate }}
           to {{ endDate }}
@@ -23,10 +24,14 @@
 </template>
 
 <script>
+import TripCardStatus from '@/views/trips/components/TripCardStatus.vue'
 import { formatStringDate } from '@/shared/date/date-provider'
 
 export default {
   name: 'TripCard',
+  components: {
+    TripCardStatus
+  },
   props: {
     trip: Object
   },
