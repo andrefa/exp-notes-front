@@ -11,6 +11,10 @@ const generateColorPalette = (size) => {
   const start = [255, 221, 160]
   const end = [255, 89, 88]
 
+  if (size === 1) {
+    return [rgbToHex(start)]
+  }
+
   const generatedColors = []
 
   // eslint-disable-next-line
