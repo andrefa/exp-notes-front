@@ -43,6 +43,10 @@
           href="#cards" v-on:click="gotoExpenses(trip.id)">Expenses</a>
         <a class="btn btn-primary" :class="{ disabled: status === 'COMING' }"
           href="#cards" v-on:click="gotoReports(trip.id)">Reports</a>
+        <button class="btn btn-action s-circle" v-on:click="addExpense(trip.id)"
+          title="Add expense" :class="{ disabled: status === 'COMING' }">
+          <i class="icon icon-plus"></i>
+        </button>
       </div>
     </div>
   </div>
@@ -88,6 +92,9 @@ export default {
     },
     gotoReports(id) {
       this.$router.push(`/reports/${id}`)
+    },
+    addExpense(id) {
+      this.$router.push(`/expenses/add/${id}`)
     },
     md5Hash(text) {
       return md5(text)

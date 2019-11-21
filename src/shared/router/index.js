@@ -22,9 +22,16 @@ const routes = [
   {
     path: '/expenses/:tripId',
     name: 'expenses',
-    meta: { title: 'Trips' },
+    meta: { title: 'Expenses' },
     // lazy loading
     component: () => import('@/views/expenses/Expenses.vue')
+  },
+  {
+    path: '/expenses/add/:tripId',
+    name: 'add-expenses',
+    meta: { title: 'Add Expense' },
+    // lazy loading
+    component: () => import('@/views/expenses/AddExpense.vue')
   },
   {
     path: '/lists',
