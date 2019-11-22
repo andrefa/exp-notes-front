@@ -18,6 +18,7 @@ export const FETCH_TRIPS = 'FETCH_TRIPS'
 export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'
 
+export const SAVE_EXPENSE = 'SAVE_EXPENSE'
 export const SAVE_TASK = 'SAVE_TASK'
 
 export const TOGGLE_TASK = 'TOGGLE_TASK'

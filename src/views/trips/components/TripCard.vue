@@ -38,11 +38,11 @@
       </div>
 
       <div class="card-footer">
-        <a class="btn btn-primary" href="#cards" v-on:click="setActiveTrip(trip.id)">Tasks</a>
+        <a class="btn btn-primary" v-on:click="setActiveTrip(trip.id)">Tasks</a>
         <a class="btn btn-primary" :class="{ disabled: status === 'COMING' }"
-          href="#cards" v-on:click="gotoExpenses(trip.id)">Expenses</a>
+            v-on:click="gotoExpenses(trip.id)">Expenses</a>
         <a class="btn btn-primary" :class="{ disabled: status === 'COMING' }"
-          href="#cards" v-on:click="gotoReports(trip.id)">Reports</a>
+            v-on:click="gotoReports(trip.id)">Reports</a>
         <button class="btn btn-action s-circle" v-on:click="addExpense(trip.id)"
           title="Add expense" :class="{ disabled: status === 'COMING' }">
           <i class="icon icon-plus"></i>
@@ -116,7 +116,7 @@ export default {
     font-size: 0.7rem;
   }
   .btn {
-    margin: .6rem .6rem 0 0;
+    margin: .4rem .4rem 0 0;
   }
   .enphasize {
     font-weight: bold;
