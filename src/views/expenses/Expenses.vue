@@ -11,6 +11,7 @@
           <th>Description</th>
           <th>Category</th>
           <th>Source</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -22,6 +23,7 @@
           <td>{{ exp.description }}</td>
           <td>{{ exp.category.name }}</td>
           <td>{{ exp.source.name }}</td>
+          <td><i class="icon icon-stop" v-on:click='deleteExpense(exp.id)'></i></td>
         </tr>
       </tbody>
     </table>
@@ -39,6 +41,20 @@ export default {
   ]),
   created() {
     this.$store.dispatch(actionTypes.FETCH_EXPENSES, { tripId: this.$route.params.tripId })
+  },
+  methods: {
+    deleteExpense(expenseId) {
+      // eslint-disable-next-line
+      if (confirm('Confirm expense removal?')) {
+        this.$store.dispatch(actionTypes.DELETE_EXPENSE, { expenseId })
+      }
+    }
   }
 }
 </script>
+
+<style scoped>
+  .icon-stop {
+    color: red;
+  }
+</style>

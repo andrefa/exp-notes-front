@@ -1,4 +1,6 @@
 export const CLEAR_TASK_FORM = 'CLEAR_TASK_FORM'
+
+export const DELETE_EXPENSE = 'DELETE_EXPENSE'
 export const DELETE_TASK = 'DELETE_TASK'
 
 export const EDIT_TASK = 'EDIT_TASK'

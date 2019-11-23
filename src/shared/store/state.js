@@ -12,9 +12,7 @@ const state = {
   spentPerSource: [],
   spentPerCategory: [],
   spentPerDayAndCategory: [],
-  remainingDays: 0,
-  remainingAmountPerSource: [],
-  remainingAmountPerDay: 0
+  remainingAmountPerSource: []
 }
 
 export default state

@@ -12,6 +12,12 @@ const mutations = {
       taskForm: { ...defaultState.taskForm }
     })
   },
+  [mutationTypes.DELETE_EXPENSE](state, { expenseId } = {}) {
+    Object.assign(state, {
+      ...state,
+      expenses: state.expenses.filter(e => e.id !== expenseId)
+    })
+  },
   [mutationTypes.DELETE_TASK](state, { taskId } = {}) {
     Object.assign(state, {
       ...state,

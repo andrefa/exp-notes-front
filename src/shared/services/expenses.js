@@ -5,6 +5,16 @@ import httpClientFactory from '@/shared/services/http/http-client'
 
 const EXPENSE_FIELDS = 'id description price date category { id name } source { id name } place { id name } currency { id symbol }'
 
+const deleteExpense = async ({ commit, state }, { expenseId }) => {
+  commit(mutationTypes.TOGGLE_LOADING, { loading: true })
+
+  const query = `mutation { deleteExpense(id: ${expenseId}) }`
+  await httpClientFactory(state).fetchGraphql(query)
+  commit(mutationTypes.DELETE_EXPENSE, { expenseId })
+
+  commit(mutationTypes.TOGGLE_LOADING)
+}
+
 const fetchExpenses = async ({ commit, state }, { tripId }) => {
   commit(mutationTypes.TOGGLE_LOADING, { loading: true })
 
@@ -46,6 +56,7 @@ const saveExpense = async ({ commit, state }, { expense, tripId }) => {
 }
 
 const actions = {
+  [actionTypes.DELETE_EXPENSE]: deleteExpense,
   [actionTypes.FETCH_EXPENSES]: fetchExpenses,
   [actionTypes.SAVE_EXPENSE]: saveExpense
 }

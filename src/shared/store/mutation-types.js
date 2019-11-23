@@ -1,6 +1,7 @@
 export const CLEAR = 'CLEAR'
 export const CLEAR_TASK_FORM = 'CLEAR_TASK_FORM'
 
+export const DELETE_EXPENSE = 'DELETE_EXPENSE'
 export const DELETE_TASK = 'DELETE_TASK'
 
 export const SAVE_TASK = 'SAVE_TASK'
