@@ -1,5 +1,5 @@
 <template>
-  <div class="column col-4 col-md-6 col-xs-12 mobile-margin">
+  <div class="column col-4 col-md-6 col-xs-12 card-margin">
     <div class="card" v-if="trip">
       <div class="card-image">
         <img class="img-responsive"
@@ -104,10 +104,8 @@ export default {
 </script>
 
 <style scoped>
-  @media all and (max-width: 800px) {
-    .mobile-margin:not(:last-child) > * {
-      margin-bottom: 20px;
-    }
+  .card-margin {
+    margin-bottom: 20px;
   }
   .trip-period{
     margin-bottom: 0.5rem
