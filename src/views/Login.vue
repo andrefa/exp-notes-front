@@ -3,13 +3,22 @@
     <div class="empty">
       <div class="empty-icon"><i class="icon icon-3x icon-people"></i></div>
       <p class="empty-title h5">Login</p>
-      <p class="empty-subtitle">Access token:</p>
-      <div class="empty-action input-group input-inline">
-        <input class="form-input" type="text" placeholder="token" v-model="authToken" />
+      <div class="form-group">
+        <label class="form-label" for="login-email">Email</label>
+        <input class="form-input" type="text" id="login-email"
+          v-model="email" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="login-pwd">Password</label>
+        <input class="form-input" type="password" id="login-pwd"
+          v-model="password" placeholder="Password">
+      </div>
+      <div class="form-group">
         <button class="btn btn-primary input-group-btn" v-on:click="login" :disabled="loading">
           Login
         </button>
       </div>
+      <p class="empty-title text-error">{{ error }}</p>
     </div>
   </div>
 </template>
@@ -20,15 +29,22 @@ import { LOGIN } from '@/shared/store/action-types'
 
 export default {
   data: () => ({
-    authToken: ''
+    email: '',
+    password: '',
+    error: ''
   }),
   computed: mapState({
     loading: 'loading'
   }),
   methods: {
-    login() {
-      this.$store.dispatch(LOGIN, { authToken: this.authToken })
-      this.$router.push('/trips')
+    async login() {
+      try {
+        this.error = ''
+        await this.$store.dispatch(LOGIN, { email: this.email, password: this.password })
+        this.$router.push('/trips')
+      } catch (exception) {
+        this.error = exception.message
+      }
     }
   }
 }
