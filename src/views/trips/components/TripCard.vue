@@ -74,10 +74,10 @@ export default {
       return formatStringDate(this.trip.end_date)
     },
     status() {
-      if (isBeforeNow(this.endDate)) {
+      if (isBeforeNow(this.trip.end_date)) {
         return 'FINISHED'
       }
-      if (isAfterNow(this.startDate)) {
+      if (isAfterNow(this.trip.start_date)) {
         return 'COMING'
       }
       return 'CURRENT'
