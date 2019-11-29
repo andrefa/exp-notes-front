@@ -25,7 +25,7 @@
             <label class="form-label" for="input-date">Date</label>
           </div>
           <div class="col-4 col-sm-12">
-            <input class="form-input" id="input-date" type="date"
+            <input class="form-input fix-invalid-outline" id="input-date" type="date"
               placeholder="Date" required v-model="expense.date">
           </div>
         </div>
@@ -159,6 +159,9 @@ export default {
 <style scoped>
   button {
     margin: 0 .6rem 0 0rem;
+  }
+  .fix-invalid-outline:invalid {
+    border-color: #bcc3ce;
   }
   @media (max-width: 600px) {
     button {
