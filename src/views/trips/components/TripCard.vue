@@ -41,10 +41,9 @@
         <a class="btn btn-primary" v-on:click="setActiveTrip(trip.id)">Tasks</a>
         <a class="btn btn-primary" :class="{ disabled: status === 'COMING' }"
             v-on:click="gotoExpenses(trip.id)">Expenses</a>
-        <a class="btn btn-primary" :class="{ disabled: status === 'COMING' }"
-            v-on:click="gotoReports(trip.id)">Reports</a>
+        <a class="btn btn-primary" v-on:click="gotoReports(trip.id)">Reports</a>
         <button class="btn btn-action s-circle" v-on:click="addExpense(trip.id)"
-          title="Add expense" :class="{ disabled: status === 'COMING' }">
+          title="Add expense">
           <i class="icon icon-plus"></i>
         </button>
       </div>

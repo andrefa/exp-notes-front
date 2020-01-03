@@ -15,8 +15,12 @@ async function fetchTrips({ commit, state }) {
      }
     }
   }`
-  const { trips } = await httpClientFactory(state).fetchGraphql(query)
-  commit(SET_TRIPS, { trips })
+  try {
+    const { trips } = await httpClientFactory(state).fetchGraphql(query)
+    commit(SET_TRIPS, { trips })
+  } finally {
+    commit(TOGGLE_LOADING)
+  }
 
   commit(TOGGLE_LOADING)
 }
